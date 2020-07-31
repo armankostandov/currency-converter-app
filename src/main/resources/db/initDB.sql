@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS currencies;
+DROP TABLE IF EXISTS roles;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE currencies
 (
@@ -10,3 +12,15 @@ CREATE TABLE currencies
     date             TIMESTAMP           DEFAULT now() NOT NULL
 );
 
+CREATE TABLE roles
+(
+    id              SERIAL                              PRIMARY KEY,
+    name            VARCHAR                             NOT NULL
+);
+
+CREATE TABLE users
+(
+    id              SERIAL                              PRIMARY KEY,
+    username        VARCHAR                             NOT NULL,
+    password        VARCHAR                             NOT NULL
+);
