@@ -23,6 +23,9 @@ public class User extends BaseEntity implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private Set<Conversation> conversations;
+
     public User() {
     }
 
@@ -58,6 +61,14 @@ public class User extends BaseEntity implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public Set<Conversation> getConversations() {
+        return conversations;
+    }
+
+    public void setConversations(Set<Conversation> conversations) {
+        this.conversations = conversations;
     }
 
     @Override
