@@ -3,10 +3,12 @@ package com.currencyconverter.services.springdatajpa;
 import com.currencyconverter.model.User;
 import com.currencyconverter.repositories.UserRepository;
 import com.currencyconverter.services.UserService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class UserSDJpaService implements UserService {
 
     UserRepository userRepository;
