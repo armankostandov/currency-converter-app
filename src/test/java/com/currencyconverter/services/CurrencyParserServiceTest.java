@@ -27,5 +27,6 @@ public class CurrencyParserServiceTest {
         Set<Currency> currencies = CurrencyParserService.getCurrency(
                 "http://www.cbr.ru/scripts/XML_daily.asp?date_req=" + date);
         currencies.forEach(currency -> System.out.println(currency));
+        System.out.println(currencies.size());
     }
 }

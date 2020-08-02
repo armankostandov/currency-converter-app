@@ -42,8 +42,8 @@ class CurrencyRepositoryTest {
 
     @Test
     void saveCurrency() {
-        assertThat(currencyRepository.findById(1L).get()).isEqualTo(currency1);
-        assertThat(currencyRepository.findById(2L).get()).isEqualTo(currency2);
+        assertThat(currencyRepository.findById("USD").get()).isEqualTo(currency1);
+        assertThat(currencyRepository.findById("AMD").get()).isEqualTo(currency2);
     }
 
 }

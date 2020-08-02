@@ -8,11 +8,11 @@ import java.time.LocalDate;
 public class Conversation extends BaseEntity {
 
     @OneToOne
-    @JoinColumn(name = "in_currency_id", referencedColumnName = "id")
+    @JoinColumn(name = "in_currency_code", referencedColumnName = "code")
     private Currency inCurrency;
 
     @OneToOne
-    @JoinColumn(name = "out_currency_id", referencedColumnName = "id")
+    @JoinColumn(name = "out_currency_code", referencedColumnName = "code")
     private Currency outCurrency;
 
     @Column(name = "in_value")
