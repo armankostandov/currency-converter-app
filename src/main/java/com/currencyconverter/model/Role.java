@@ -13,7 +13,7 @@ public class Role extends BaseEntity implements GrantedAuthority {
     private String name;
 
     @Transient
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy="roles",cascade = {CascadeType.MERGE},fetch= FetchType.EAGER)
     private Set<User> users;
 
     public Role() {

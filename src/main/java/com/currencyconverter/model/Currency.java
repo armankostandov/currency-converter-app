@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "currencies")
@@ -82,5 +83,33 @@ public class Currency extends BaseEntity {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Currency{" +
+                "name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", value=" + value +
+                ", nominal=" + nominal +
+                ", date=" + date +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Currency currency = (Currency) o;
+        return Objects.equals(name, currency.name) &&
+                Objects.equals(code, currency.code) &&
+                Objects.equals(value, currency.value) &&
+                Objects.equals(nominal, currency.nominal) &&
+                Objects.equals(date, currency.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, code, value, nominal, date);
     }
 }
