@@ -11,6 +11,8 @@ import javax.xml.xpath.XPathExpressionException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,9 +22,10 @@ public class CurrencyParserServiceTest {
 
     @Test
     public void parser() throws XPathExpressionException {
-       // CurrencyParserService currencyParserService=new CurrencyParserService();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String date = LocalDate.now().format(formatter);
-        CurrencyParserService.getCurrency("http://www.cbr.ru/scripts/XML_daily.asp?date_req=" + date);
+        Set<Currency> currencies = CurrencyParserService.getCurrency(
+                "http://www.cbr.ru/scripts/XML_daily.asp?date_req=" + date);
+        currencies.forEach(currency -> System.out.println(currency));
     }
 }

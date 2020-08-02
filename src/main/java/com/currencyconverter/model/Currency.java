@@ -1,19 +1,23 @@
 package com.currencyconverter.model;
 
+import org.springframework.context.annotation.Primary;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
 @Table(name = "currencies")
-public class Currency extends BaseEntity {
+public class Currency {
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "code")
+    @Id
+    @Column(name = "code", nullable = false)
     private String code;
 
     @Column(name = "value")

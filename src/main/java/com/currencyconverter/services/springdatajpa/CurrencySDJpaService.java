@@ -22,8 +22,30 @@ public class CurrencySDJpaService implements CurrencyService {
     }
 
     @Override
-    public Currency findCurrencyByCode(String code) {
-        return currencyRepository.findCurrencyByCode(code);
+    public Currency findById(String code) {
+        return currencyRepository.findById(code).orElse(null);
+    }
+
+    @Override
+    public Currency save(Currency object) {
+        return currencyRepository.save(object);
+    }
+
+    @Override
+    public void delete(Currency object) {
+        currencyRepository.delete(object);
+    }
+
+    @Override
+    public void deleteById(String code) {
+        currencyRepository.deleteById(code);
+    }
+
+    @Override
+    public Set<Currency> findAll() {
+        Set<Currency> currencies = new HashSet<>();
+        currencyRepository.findAll().forEach(currencies::add);
+        return currencies;
     }
 
     @Override
@@ -39,33 +61,6 @@ public class CurrencySDJpaService implements CurrencyService {
         }
         currencies.forEach(currency -> currencyRepository.save(currency));
         return currencies.size();
-    }
-
-    @Override
-    public Currency findById(Long aLong) {
-        return currencyRepository.findById(aLong).orElse(null);
-    }
-
-    @Override
-    public Currency save(Currency object) {
-        return currencyRepository.save(object);
-    }
-
-    @Override
-    public void delete(Currency object) {
-        currencyRepository.delete(object);
-    }
-
-    @Override
-    public void deleteById(Long aLong) {
-        currencyRepository.deleteById(aLong);
-    }
-
-    @Override
-    public Set<Currency> findAll() {
-        Set<Currency> currencies = new HashSet<>();
-        currencyRepository.findAll().forEach(currencies::add);
-        return currencies;
     }
 
 }

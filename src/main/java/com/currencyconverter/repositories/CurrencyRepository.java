@@ -4,9 +4,9 @@ import com.currencyconverter.model.Currency;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface CurrencyRepository extends CrudRepository<Currency, Long> {
+import java.time.LocalDate;
 
-    Currency findCurrencyByCode(String code);
+@Repository
+public interface CurrencyRepository extends CrudRepository<Currency, String> {
 
 }
