@@ -2,9 +2,13 @@ package com.currencyconverter.services.springdatajpa;
 
 import com.currencyconverter.model.Currency;
 import com.currencyconverter.repositories.CurrencyRepository;
+import com.currencyconverter.services.CurrencyParserService;
 import com.currencyconverter.services.CurrencyService;
 import org.springframework.stereotype.Service;
 
+import javax.xml.xpath.XPathExpressionException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +24,21 @@ public class CurrencySDJpaService implements CurrencyService {
     @Override
     public Currency findCurrencyByCode(String code) {
         return currencyRepository.findCurrencyByCode(code);
+    }
+
+    @Override
+    public Integer updateCurrencyValues() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String date = LocalDate.now().format(formatter);
+        Set<Currency> currencies = new HashSet<>();
+        try {
+            currencies = CurrencyParserService.getCurrency(
+                    "http://www.cbr.ru/scripts/XML_daily.asp?date_req=" + date);
+        } catch (XPathExpressionException e) {
+            e.printStackTrace();
+        }
+        currencies.forEach(currency -> currencyRepository.save(currency));
+        return currencies.size();
     }
 
     @Override
@@ -48,4 +67,5 @@ public class CurrencySDJpaService implements CurrencyService {
         currencyRepository.findAll().forEach(currencies::add);
         return currencies;
     }
+
 }

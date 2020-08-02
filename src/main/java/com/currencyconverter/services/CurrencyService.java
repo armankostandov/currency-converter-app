@@ -6,4 +6,6 @@ public interface CurrencyService extends CrudService<Currency, Long> {
 
     Currency findCurrencyByCode(String code);
 
+    Integer updateCurrencyValues();
+
 }
