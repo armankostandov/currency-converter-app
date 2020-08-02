@@ -1,6 +1,7 @@
 package com.currencyconverter.services.springdatajpa;
 
 import com.currencyconverter.model.Conversation;
+import com.currencyconverter.model.User;
 import com.currencyconverter.repositories.ConversationRepository;
 import com.currencyconverter.services.ConversationService;
 import org.springframework.stereotype.Service;
@@ -47,9 +48,14 @@ public class ConversationSDJpaService implements ConversationService {
     }
 
     @Override
-    public List<Conversation> findConversationByDateBetweenOrderByDate(
-            LocalDate dateStarting, LocalDate dateEnding) {
-        return conversationRepository.findConversationByDateBetweenOrderByDate(
-                dateStarting, dateEnding);
+    public List<Conversation> findAllByDateIsBetweenAndUserOrderByDate(
+            LocalDate dateStarting, LocalDate dateEnding, User user) {
+        return conversationRepository.findAllByDateIsBetweenAndUserOrderByDate(
+                dateStarting, dateEnding, user);
+    }
+
+    @Override
+    public List<Conversation> findAllByUser(User user) {
+        return conversationRepository.findAllByUser(user);
     }
 }

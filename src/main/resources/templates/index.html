@@ -5,6 +5,7 @@
         <title>Currency Converter</title>
     </head>
     <body>
+        <a th:href="@{/logout}">Выйти</a>
         <h1 th:text="'Конвертер Валют'">Welcome To Currency Converter App</h1>
         <form th:action="@{convert}" method="post">
             <label> Выберите исходную валюту: </label>
@@ -19,10 +20,31 @@
                     <p th:text="${currency.code + ' (' + currency.name + ')'}"></p>
                 </option>
             </select>
-            <br>
             <label> Введите исходную сумму: </label>
             <input type="number" name="source_value" step="any"/>
             <input type="submit" name="submit" value="Конвертировать">
         </form>
+        <br>
+        <h2 th:text="'История Ваших Операций'">Conversations history</h2>
+        <table>
+            <thead>
+            <tr>
+                <td>Исходная валюта</td>
+                <td>Исходная сумма</td>
+                <td>Полученная валюта</td>
+                <td>Полученная сумма</td>
+                <td>Дата</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="conversation : ${conversations}">
+                <td th:text="${conversation.inCurrency.code}"></td>
+                <td th:text="${conversation.inValue}"></td>
+                <td th:text="${conversation.outCurrency.code}"></td>
+                <td th:text="${conversation.outValue}"></td>
+                <td th:text="${conversation.date}"></td>
+            </tr>
+            </tbody>
+        </table>
     </body>
 </html>

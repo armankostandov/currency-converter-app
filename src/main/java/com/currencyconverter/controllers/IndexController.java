@@ -29,7 +29,11 @@ public class IndexController {
     @RequestMapping({"", "/", "index", "index.html"})
     public String index(Model model) {
 
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
         model.addAttribute("currencies", currencyService.findAll());
+        model.addAttribute("conversations", conversationService.findAllByUser(user));
+
         return "index";
     }
 
@@ -38,6 +42,7 @@ public class IndexController {
                           @RequestParam String out_currency,
                           @RequestParam String source_value,
                           Model model) {
+
         String inCurrencyCode = in_currency.split(" ")[0];
         String outCurrencyCode = out_currency.split(" ")[0];
         Double sourceValue = Double.parseDouble(source_value);
@@ -60,6 +65,9 @@ public class IndexController {
         conversation.setUser(user);
 
         conversationService.save(conversation);
+
+        model.addAttribute("currencies", currencyService.findAll());
+        model.addAttribute("conversations", conversationService.findAllByUser(user));
 
         return "redirect:/index";
     }
