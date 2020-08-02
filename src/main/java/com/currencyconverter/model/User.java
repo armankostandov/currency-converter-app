@@ -12,7 +12,10 @@ import java.util.Set;
 @Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
 
+    @Column(name = "username")
     private  String username;
+
+    @Column(name = "password")
     private  String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")

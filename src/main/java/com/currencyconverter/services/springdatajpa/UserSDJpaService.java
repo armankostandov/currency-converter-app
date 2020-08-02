@@ -3,6 +3,9 @@ package com.currencyconverter.services.springdatajpa;
 import com.currencyconverter.model.User;
 import com.currencyconverter.repositories.UserRepository;
 import com.currencyconverter.services.UserService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -42,5 +45,10 @@ public class UserSDJpaService implements UserService {
         Set<User> users = new HashSet<>();
         userRepository.findAll().forEach(users::add);
         return users;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        return userRepository.findByUsername(userName);
     }
 }
