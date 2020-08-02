@@ -4,7 +4,6 @@ import com.currencyconverter.model.User;
 import com.currencyconverter.repositories.UserRepository;
 import com.currencyconverter.services.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +49,10 @@ public class UserSDJpaService implements UserService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         return userRepository.findByUsername(userName);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }
