@@ -6,22 +6,22 @@
     </head>
     <body>
         <h1 th:text="'Конвертер Валют'">Welcome To Currency Converter App</h1>
-        <form th:action="@{/index}" method="post">
+        <form th:action="@{convert}" method="post">
             <label> Выберите исходную валюту: </label>
-            <select>
+            <select name="in_currency">
                 <option th:each="currency : ${currencies}">
                     <p th:text="${currency.code + ' (' + currency.name + ')'}"></p>
                 </option>
             </select>
             <label> Выберите желаемую валюту: </label>
-            <select>
+            <select name="out_currency">
                 <option th:each="currency : ${currencies}">
                     <p th:text="${currency.code + ' (' + currency.name + ')'}"></p>
                 </option>
             </select>
             <br>
             <label> Введите исходную сумму: </label>
-            <input type="number" name="in_value" step="any"/>
+            <input type="number" name="source_value" step="any"/>
             <input type="submit" name="submit" value="Конвертировать">
         </form>
     </body>

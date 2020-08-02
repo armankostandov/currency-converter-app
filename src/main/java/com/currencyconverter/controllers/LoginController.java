@@ -18,11 +18,9 @@ public class LoginController {
 
     @PostMapping
     public String index(){
-        if (currencyService.findAll().size() < 34) {
-            currencyService.updateCurrencyValues();
-        }
         return "redirect:/index";
     }
+
     @GetMapping
     public String login(){
         if (currencyService.findAll().size() < 34) {
