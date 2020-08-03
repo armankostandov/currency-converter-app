@@ -51,6 +51,13 @@ public class IndexController {
         Currency inCurrency = currencyService.findById(inCurrencyCode);
         Currency outCurrency = currencyService.findById(outCurrencyCode);
 
+        if (inCurrency.getDate().isBefore(LocalDate.now()) |
+                outCurrency.getDate().isBefore(LocalDate.now())) {
+            currencyService.updateCurrencyValues();
+            inCurrency = currencyService.findById(inCurrencyCode);
+            outCurrency = currencyService.findById(outCurrencyCode);
+        }
+
         Double outValue = sourceValue/inCurrency.getNominal()*
                 inCurrency.getValue()*outCurrency.getNominal()/
                 outCurrency.getValue();

@@ -4,21 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Конвертер Валют</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="active breadcrumb-item"><a th:href="@{/login}">Войти</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/registration}">Зарегистрироваться</a></li>
+        </ol>
+    </nav>
     <form th:action="@{/login}" method="post">
-        <div>
-            <label> Имя пользователя : </label><br>
-            <input type="text" name="username"/>
+        <h2 th:text="'Войти'"></h2>
+        <div class="row">
+            <div class="col-md-4">
+                 <label> Имя пользователя : </label>
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="username"/>
+            </div>
         </div>
-        <div>
-            <label> Пароль : </label><br>
-            <input type="password" name="password"/>
+        <div class="row">
+            <div class="col-md-4">
+                <label> Пароль : </label>
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" type="password" name="password"/>
+            </div>
         </div>
-        <div>
-            <input type="submit" value="Войти"/>
+        <div class="row">
+            <input class="btn btn-dark" type="submit" value="Войти"/>
         </div>
     </form>
-    <p>Нажмите <a th:href="@{/registration}">сюда</a>, чтобы зарегистрироваться.</p>
 </body>
 </html>
