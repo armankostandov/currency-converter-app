@@ -1,0 +1,50 @@
+body {
+    background: url(/img/bg.jpg) fixed !important;
+}
+
+.active.breadcrumb-item a {
+    color: #b5b5b5;
+    font-size: large !important;
+}
+
+.breadcrumb-item a {
+    color: white;
+}
+
+.breadcrumb-item a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+ol.breadcrumb {
+    background-color: #343a40 !important;
+}
+
+form {
+    display: inline-grid;
+    width: 60%;
+    margin-left: 20%;
+    background-color: lightgray;
+    padding: 2%;
+    border: darkgray solid 2px;
+    border-radius: 15px;
+}
+
+form input {
+    margin-bottom: 10px !important;
+    width: 100%;
+}
+
+form select {
+    margin-bottom: 10px !important;
+    width: 100%;
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.btn.btn-dark {
+    width: 100% !important;
+}

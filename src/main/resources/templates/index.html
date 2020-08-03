@@ -3,36 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Конвертер Валют</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-    <ul id="menu-bar">
-        <li><a th:href="@{/index}">Главная</a></li>
-        <li><a th:href="@{/history}">История</a></li>
-        <li><a th:href="@{/logout}">Выйти</a></li>
-    </ul>
-    <h1 th:text="'Конвертер Валют'">Welcome To Currency Converter App</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="active breadcrumb-item"><a th:href="@{/index}">Главная</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/history}">История</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/logout}">Выйти</a></li>
+        </ol>
+    </nav>
     <form th:action="@{convert}" method="post">
-        <label> Выберите исходную валюту: </label>
-        <select name="in_currency">
-            <option th:each="currency : ${currencies}"
-                    th:text="${currency.code + ' (' + currency.name + ')'}"
-                    th:value="${currency.code}"
-                    th:selected="${currency.code==inCurrencySelected.code}">
-            </option>
-        </select>
-        <label> Выберите желаемую валюту: </label>
-        <select name="out_currency">
-            <option th:each="currency : ${currencies}"
-                    th:text="${currency.code + ' (' + currency.name + ')'}"
-                    th:value="${currency.code}"
-                    th:selected="${currency.code==outCurrencySelected.code}">
-            </option>
-        </select>
-        <label> Введите исходную сумму: </label>
-        <input type="number" name="source_value" step="any" th:value="${in_value}" required/>
-        <label> Результат: </label>
-        <input type="text" name="out_value" step="any" th:value="${out_value}" readonly/>
-        <input type="submit" name="submit" value="Конвертировать">
+        <h2 th:text="'Конвертер Валют'">Welcome To Currency Converter App</h2>
+        <div class="row">
+            <div class="col-md-6"><label> Выберите исходную валюту: </label></div>
+            <div class="col-md-6"><label> Выберите желаемую валюту: </label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <select class="form-control" name="in_currency">
+                    <option th:each="currency : ${currencies}"
+                            th:text="${currency.code + ' (' + currency.name + ')'}"
+                            th:value="${currency.code}"
+                            th:selected="${currency.code==inCurrencySelected.code}">
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select class="form-control" name="out_currency">
+                    <option th:each="currency : ${currencies}"
+                            th:text="${currency.code + ' (' + currency.name + ')'}"
+                            th:value="${currency.code}"
+                            th:selected="${currency.code==outCurrencySelected.code}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6"><label> Введите исходную сумму: </label></div>
+            <div class="col-md-6"><label> Результат: </label></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input class="form-control" type="number" name="source_value" step="any" th:value="${in_value}" min="0" required/>
+            </div>
+            <div class="col-md-6">
+                <input class="form-control" type="text" name="out_value" step="any" th:value="${out_value}" readonly/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input class="btn btn-dark" type="submit" name="submit" value="Конвертировать">
+            </div>
+        </div>
     </form>
 </body>
 </html>

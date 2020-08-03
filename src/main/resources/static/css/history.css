@@ -1,0 +1,65 @@
+body {
+    background: url(/img/bg.jpg) fixed !important;
+}
+
+.active.breadcrumb-item a {
+    color: #b5b5b5;
+    font-size: large;
+}
+
+.breadcrumb-item a {
+    color: white;
+    font-size: large;
+}
+
+.breadcrumb-item a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+ol.breadcrumb {
+    background-color: #343a40 !important;
+}
+
+table {
+    background-color: lightgray;
+    border: 4px solid darkgray;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 100px;
+}
+
+thead tr {
+    border-bottom: 4px solid darkgray;
+    font-style: italic;
+}
+
+tr {
+    border: 1px solid darkgray;
+}
+
+td {
+    border: 1px solid darkgray;
+    padding: 10px;
+    text-align: center;
+}
+
+form {
+    width: 80%;
+    margin-left: 10%;
+    background-color: darkgray;
+    padding: 2%;
+}
+
+form input {
+    margin-bottom: 10px !important;
+    width: 100%;
+}
+
+form h2, h5 {
+    text-align: center;
+}
+
+.btn.btn-dark {
+    width: 100% !important;
+}

@@ -42,6 +42,8 @@ public class HistoryController {
         LocalDate dateStarting = LocalDate.parse(date_starting, formatter);
         LocalDate dateEnding = LocalDate.parse(date_ending, formatter);
 
+        model.addAttribute("date_starting", dateStarting);
+        model.addAttribute("date_ending", dateEnding);
         model.addAttribute("conversations",
                 conversationService.findAllByDateIsBetweenAndUserOrderByDate(
                         dateStarting, dateEnding, user));
