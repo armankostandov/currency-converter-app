@@ -31,7 +31,7 @@ public class RegistrationController {
         User userFromDB = userService.findByUsername(username);
 
         if (userFromDB != null) {
-            model.addAttribute("message", "Пользователь c ником " +
+            model.addAttribute("message", "* пользователь c ником " +
                     username + " уже существует");
             return "registration";
         }

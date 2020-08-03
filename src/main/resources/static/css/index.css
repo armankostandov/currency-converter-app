@@ -3,12 +3,12 @@ body {
 }
 
 .active.breadcrumb-item a {
-    color: #b5b5b5;
+    color: white;
     font-size: large !important;
 }
 
 .breadcrumb-item a {
-    color: white;
+    color: #b5b5b5;
 }
 
 .breadcrumb-item a:hover {

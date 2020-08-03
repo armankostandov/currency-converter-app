@@ -1,27 +1,42 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>Конвертер Валют</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Регистрация</h1>
-    <p th:text="${message}"></p>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/login}">Войти</a></li>
+            <li class="active breadcrumb-item"><a th:href="@{/registration}">Зарегистрироваться</a></li>
+        </ol>
+    </nav>
     <form th:action="@{/registration}" method="post">
-        <div>
-            <label> Имя пользователя :</label></br>
-            <input type="text" name="username"/>
+        <h2 th:text="'Регистрация'"></h2>
+        <p style="color: darkred" th:text="${message}"></p>
+        <div class="row">
+            <div class="col-md-4">
+                <label> Введите логин : </label>
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" type="text" name="username"/>
+            </div>
         </div>
-        <div>
-            <label> Пароль :</label></br>
-            <input type="password" name="password"/>
+        <div class="row">
+            <div class="col-md-4">
+                <label> Введите пароль : </label>
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" type="password" name="password"/>
+            </div>
         </div>
-        <div>
-            <input type="submit" value="Зарегистрироваться"/>
+        <div class="row">
+            <input class="btn btn-dark" type="submit" value="Зарегистрироваться"/>
         </div>
-
-        <p><a th:href="@{/login}">Вернуться</a> </p>
     </form>
 </body>
 </html>
