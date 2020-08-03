@@ -12,6 +12,15 @@
         <li><a th:href="@{/logout}">Выйти</a></li>
     </ul>
     <h1 th:text="'История Ваших Операций'">Conversations history</h1>
+    <form th:action="@{history}" method="post">
+        <h3 th:text="'Найти операции по датам'"></h3>
+        <label> C: </label>
+        <input type="date" name="date_starting" required="required">
+        <label> До: </label>
+        <input type="date" name="date_ending" required="required">
+        <input type="submit" name="submit" value="Поиск">
+        <br>
+    </form>
     <table>
         <thead>
         <tr>

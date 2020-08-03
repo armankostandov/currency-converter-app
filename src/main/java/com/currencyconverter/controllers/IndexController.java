@@ -30,7 +30,10 @@ public class IndexController {
     public String index(Model model) {
 
         model.addAttribute("currencies", currencyService.findAll());
+        model.addAttribute("in_value", 0);
         model.addAttribute("out_value", 0);
+        model.addAttribute("inCurrencySelected", currencyService.findById("USD"));
+        model.addAttribute("outCurrencySelected", currencyService.findById("AMD"));
 
         return "index";
     }
@@ -65,7 +68,10 @@ public class IndexController {
         conversationService.save(conversation);
 
         model.addAttribute("currencies", currencyService.findAll());
+        model.addAttribute("in_value", sourceValue);
         model.addAttribute("out_value", outValue);
+        model.addAttribute("inCurrencySelected", inCurrency);
+        model.addAttribute("outCurrencySelected", outCurrency);
 
         return "index";
     }
