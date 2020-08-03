@@ -29,10 +29,8 @@ public class IndexController {
     @RequestMapping({"", "/", "index", "index.html"})
     public String index(Model model) {
 
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         model.addAttribute("currencies", currencyService.findAll());
-        model.addAttribute("conversations", conversationService.findAllByUser(user));
+        model.addAttribute("out_value", 0);
 
         return "index";
     }
@@ -67,9 +65,9 @@ public class IndexController {
         conversationService.save(conversation);
 
         model.addAttribute("currencies", currencyService.findAll());
-        model.addAttribute("conversations", conversationService.findAllByUser(user));
+        model.addAttribute("out_value", outValue);
 
-        return "redirect:/index";
+        return "index";
     }
 }
 

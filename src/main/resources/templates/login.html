@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <meta charset="UTF-8">
-        <title>Currency Converter</title>
-    </head>
-    <body>
-        <form th:action="@{/login}" method="post">
-            <div>
-                <label> Имя пользователя : </label></br>
-                <input type="text" name="username"/>
-            </div>
-            <div>
-                <label> Пароль : </label></br>
-                <input type="password" name="password"/>
-            </div>
-            <div>
-                <input type="submit" value="Войти"/>
-            </div>
-        </form>
-        <p>Нажмите <a th:href="@{/registration}">сюда</a>, чтобы зарегистрироваться.</p>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Конвертер Валют</title>
+</head>
+<body>
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label> Имя пользователя : </label><br>
+            <input type="text" name="username"/>
+        </div>
+        <div>
+            <label> Пароль : </label><br>
+            <input type="password" name="password"/>
+        </div>
+        <div>
+            <input type="submit" value="Войти"/>
+        </div>
+    </form>
+    <p>Нажмите <a th:href="@{/registration}">сюда</a>, чтобы зарегистрироваться.</p>
+</body>
 </html>

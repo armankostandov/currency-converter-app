@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Конвертер Валют</title>
+</head>
+<body>
+    <ul id="menu-bar">
+        <li><a th:href="@{/index}">Главная</a></li>
+        <li><a th:href="@{/history}">История</a></li>
+        <li><a th:href="@{/logout}">Выйти</a></li>
+    </ul>
+    <h1 th:text="'История Ваших Операций'">Conversations history</h1>
+    <table>
+        <thead>
+        <tr>
+            <td>Исходная валюта</td>
+            <td>Исходная сумма</td>
+            <td>Полученная валюта</td>
+            <td>Полученная сумма</td>
+            <td>Дата</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="conversation : ${conversations}">
+            <td th:text="${conversation.inCurrency.code}"></td>
+            <td th:text="${conversation.inValue}"></td>
+            <td th:text="${conversation.outCurrency.code}"></td>
+            <td th:text="${conversation.outValue}"></td>
+            <td th:text="${conversation.date}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
