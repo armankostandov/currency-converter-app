@@ -22,7 +22,7 @@ public class HistoryController {
     }
 
     @RequestMapping({"history", "history.html"})
-    public String index(Model model) {
+    public String history(Model model) {
 
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("conversations", conversationService.findAllByUser(user));
@@ -31,7 +31,7 @@ public class HistoryController {
     }
 
     @PostMapping("history")
-    public String convert(@RequestParam String date_starting,
+    public String filter(@RequestParam String date_starting,
                           @RequestParam String date_ending,
                           Model model) {
 
