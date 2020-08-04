@@ -30,18 +30,10 @@ class CurrencyRepositoryTest {
     Currency currency2 = new Currency(
             "dram", "AMD", 15.03, 10, LocalDate.now());
 
-/*    public CurrencyRepositoryTest(CurrencyRepository currencyRepository) {
-        this.currencyRepository = currencyRepository;
-    }*/
-
-    @BeforeEach
-    void init() {
-        currencyRepository.save(currency1);
-        currencyRepository.save(currency2);
-    }
-
     @Test
     void saveCurrency() {
+        currencyRepository.save(currency1);
+        currencyRepository.save(currency2);
         assertThat(currencyRepository.findById("USD").get()).isEqualTo(currency1);
         assertThat(currencyRepository.findById("AMD").get()).isEqualTo(currency2);
     }
