@@ -17,12 +17,13 @@
     </nav>
     <form th:action="@{/login}" method="post">
         <h2 th:text="'Войти'"></h2>
+        <p style="color: darkred" th:text="${message}"></p>
         <div class="row">
             <div class="col-md-4">
                  <label> Имя пользователя : </label>
             </div>
             <div class="col-md-8">
-                <input class="form-control" type="text" name="username"/>
+                <input class="form-control" type="text" name="username" required/>
             </div>
         </div>
         <div class="row">
@@ -30,7 +31,7 @@
                 <label> Пароль : </label>
             </div>
             <div class="col-md-8">
-                <input class="form-control" type="password" name="password"/>
+                <input class="form-control" type="password" name="password" required/>
             </div>
         </div>
         <div class="row">
